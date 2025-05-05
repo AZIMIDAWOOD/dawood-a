@@ -1,12 +1,11 @@
 {
-  "name": "monprojet",
+  "name": "DAWOOD-A",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./dist/output.css",
-    "dev": "node index.js",
-    "css": "npx tailwindcss -i ./src/css/input.css -o ./dist/outpust.css --watch"
+    "css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/dist/output.css",
+    "dev": "node index.js"
   },
   "keywords": [],
   "author": "",
