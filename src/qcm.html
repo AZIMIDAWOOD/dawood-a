@@ -118,6 +118,20 @@
   .summary .incorrect {
     color: #F44336;
   }
+  .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* Aspect ratio 16:9 */
+    }
+
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
 
 </style>
 
@@ -173,6 +187,15 @@
         <p id="correct-answers" class="correct"></p>
         <p id="incorrect-answers" class="incorrect"></p>
       </div>
+    </div>
+  </div>
+  <!-- Vidéo -->
+  <div class="video-section fade-in-up">
+    <div class="video-wrapper">
+      <video controls>
+        <source src="./static/video1.mov" type="video/mp4">
+        Votre navigateur ne supporte pas la balise vidéo.
+      </video>
     </div>
   </div>
 
