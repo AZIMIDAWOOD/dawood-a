@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dawood-a">
+<head>
+  <meta charset="UTF-8" />
+  <title>QCM - Dawood</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./css/dist/output.css" rel="stylesheet" />
+</head>
+<style>
+  body {
+    background: url('./static/4.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    min-height: 100vh;
+    padding-bottom: 2rem;
+  }
+
+  .qcm-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out both;
+  }
+
+  .qcm-container h2 {
+    color: #ff4e00;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .qcm-question {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    color: white;
+  }
+
+  .qcm-options {
+    margin-top: 1rem;
+  }
+
+  .qcm-options label {
+    display: block;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    background-color: rgba(255, 165, 0, 0.7);
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .qcm-options label:hover {
+    background-color: rgba(255, 165, 0, 1);
+  }
+
+  #next-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #ff4e00;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  #next-button:hover {
+    background-color: #ffa500;
+  }
+
+  #error-message {
+    color: #ff4e00;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  #contact-button {
+    display: none;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff4e00;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+
+  #contact-button:hover {
+    background-color: #ffa500;
+  }
+
+  .summary {
+    display: none;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .summary p {
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .summary .correct {
+    color: #4CAF50;
+  }
+
+  .summary .incorrect {
+    color: #F44336;
+  }
+
+</style>
+
+<body class="min-h-screen">
+  <div class="overlay">
+        <!-- HEADER -->
+        <header class="navbar shadow-lg sticky top-0 z-50">
+          <div class="flex-1">
+            <a href="index.html" class="btn btn-ghost text-xl font-bold wow-title">Accueil</a>
+          </div>
+          <div class="flex-none relative">
+            <button class="btn btn-square btn-ghost lg:hidden" onclick="toggleMenu()">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <div id="menu-mobile"
+                 class="hidden absolute right-0 mt-2 bg-black bg-opacity-70 shadow-xl rounded-xl p-4 flex-col gap-2 w-44 z-50 lg:hidden">
+              <a href="index.html" class="btn btn-ghost w-full text-right">Accueil</a>
+              <a href="qcm.html" class="btn btn-ghost w-full text-right">QCM</a> 
+            </div>
+          </div>
+          <nav class="hidden lg:flex gap-4 px-4">
+            <a href="index.html" class="btn btn-ghost">Accueil</a>
+            <a href="qcm.html" class="btn btn-ghost">QCM</a>
+          </nav>
+        </header>
+    <div class="qcm-container">
+      <h2 class="text-3xl font-bold text-center text-indigo-600 mb-6">QCM : Du ciel d'Afghanistan aux cieux de la France : Mon rêve de devenir pilote</h2>
+      
+      <form id="qcm-form">
+        <div id="qcm-questions">
+          <!-- Les questions seront insérées ici -->
+        </div>
+        
+        <div class="mt-6 text-center">
+          <button type="button" id="next-button">
+            Suivant
+          </button>
+        </div>
+      </form>
+
+      <!-- Message d'erreur -->
+      <p id="error-message" class="error-message hidden text-center"></p>
+
+      <!-- Bouton Contact -->
+      <button id="contact-button" onclick="window.location.href='contact.html'">Contactez-nous</button>
+
+      <!-- Résumé des réponses -->
+      <div class="summary">
+        <p id="correct-answers" class="correct"></p>
+        <p id="incorrect-answers" class="incorrect"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer footer-center p-4 bg-base-200 text-base-content">
+    <p>Si vous pouvez le rêver, vous pouvez le faire. 💭💪</p>
+  </footer>
+
+  <script src="./js/app.js"></script>
+  <script src="./js/qcm.js"></script>

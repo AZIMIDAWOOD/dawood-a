@@ -1,33 +1,199 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dawood-a"></html>
+<html lang="fr" data-theme="dawood-a">
 <head>
-  <meta charset="UTF-8">
-  <title></title>
-  <link href="../src/css/dist/outpust.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>dawood</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./css/dist/output.css" rel="stylesheet" />
+  <style>
+    body {
+      background: url('./static/4.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      min-height: 100vh;
+      padding-bottom: 2rem;
+    }
+
+    header, footer, section {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .wow-title {
+      color: #ff4e00;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    a {
+      color: #ffd700;
+    }
+
+    a:hover {
+      color: #ffa500;
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 1s ease-out both;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .blog-article {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .blog-article h3 {
+      color: #ff4e00;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .blog-article p {
+      color: white;
+      line-height: 1.6;
+      animation: fadeInUp 1s ease-out both;
+    }
+
+    .blog-article a {
+      color: #ffd700;
+      font-weight: bold;
+    }
+
+    .blog-article a:hover {
+      color: #ffa500;
+    }
+
+    /* Ajout d'un style pour les images */
+    .image-section {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+    }
+
+    .image-section img {
+      border-radius: 10px;
+      width: 30%;
+      object-fit: cover;
+      height: auto;
+      animation: fadeInUp 1s ease-out both;
+    }
+
+    /* Style pour la vidéo */
+    .video-section {
+      margin-top: 3rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* Aspect ratio 16:9 */
+    }
+
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+  </style>
 </head>
+<body class="min-h-screen">
+  <div class="overlay">
+    <!-- HEADER -->
+    <header class="navbar shadow-lg sticky top-0 z-50">
+      <div class="flex-1">
+        <a href="index.html" class="btn btn-ghost text-xl font-bold wow-title">Accueil</a>
+      </div>
+      <div class="flex-none relative">
+        <button class="btn btn-square btn-ghost lg:hidden" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <div id="menu-mobile"
+             class="hidden absolute right-0 mt-2 bg-black bg-opacity-70 shadow-xl rounded-xl p-4 flex-col gap-2 w-44 z-50 lg:hidden">
+          <a href="index.html" class="btn btn-ghost w-full text-right">Accueil</a>
+          <a href="qcm.html" class="btn btn-ghost w-full text-right">QCM</a> 
+        </div>
+      </div>
+      <nav class="hidden lg:flex gap-4 px-4">
+        <a href="index.html" class="btn btn-ghost">Accueil</a>
+        <a href="qcm.html" class="btn btn-ghost">QCM</a>
+      </nav>
+    </header>
 
-<label class="btn btn-circle swap swap-rotate">
-  <!-- this hidden checkbox controls the state -->
-  <input type="checkbox" />
+    <!-- CONTENU -->
+    <section class="p-6 rounded-xl shadow-lg mt-6">
+      <h2 class="text-4xl font-bold mb-4 wow-title fade-in-up">Mon Histoire</h2>
 
-  <!-- hamburger icon -->
-  <svg
-    class="swap-off fill-current"
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 512 512">
-    <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-  </svg>
+      <!-- Histoire courte avec photos -->
+      <div class="fade-in-up">
+        <h3 class="text-2xl font-semibold text-orange-500">Du ciel d'Afghanistan aux cieux de la France : Mon rêve de devenir pilote</h3>
+        
+        <!-- Ajout des images -->
+        <div class="image-section">
+          <img src="./static/4.jpg" alt="Ciel de l'Afghanistan" />
+          <img src="./static/avion1.jpeg" alt="Arrivée en France" />
+          <img src="./static/avion.jpg" alt="Avion de ligne" />
+        </div>
 
-  <!-- close icon -->
-  <svg
-    class="swap-on fill-current"
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 512 512">
-    <polygon
-      points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-  </svg>
-</label>
+        <p class="mt-4 text-white fade-in-up">
+          Depuis mon enfance en Afghanistan, j'ai toujours été fasciné par les avions qui traversaient les cieux au-dessus de moi. Ce rêve de voler est né en moi dès que j'ai levé les yeux vers l'horizon. Chaque avion qui passait me faisait rêver d'aventure, de liberté et de voyages lointains.
+        </p>
+        <p class="mt-4 text-white fade-in-up">
+          Lorsque j'ai quitté l'Afghanistan pour la France, je savais que ce pays m'offrirait une chance unique de réaliser mon rêve. En arrivant en France, j'ai trouvé un environnement où je pouvais enfin poursuivre mes ambitions. Devenir pilote de ligne n'était plus un simple rêve lointain, mais une réalité à portée de main.
+        </p>
+        <p class="mt-4 text-white fade-in-up">
+          Aujourd'hui, chaque jour, je me rapproche un peu plus de cet objectif. L’aviation est plus qu’un métier pour moi, c'est une passion profonde. Chaque vol, chaque leçon, chaque moment passé à apprendre m'apporte un peu plus près du ciel que j'ai toujours admiré.
+        </p>
+        <p class="mt-4 text-white fade-in-up">
+          Ce rêve, qui a commencé sous le ciel d'Afghanistan, est maintenant en route pour devenir réalité dans les cieux de la France.
+        </p>
+      </div>
+
+    <!-- Vidéo -->
+    <div class="video-section fade-in-up">
+      <div class="video-wrapper">
+        <video controls>
+          <source src="./static/video.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la balise vidéo.
+        </video>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer footer-center p-4 mt-10">
+      <p>Ne laissez jamais vos rêves être des rêves🌙💫 Rêver c'est s'offrir une chance de toucher les étoiles. 🌌⭐</p>
+    </footer>
+  </div>
+
+  <!-- SCRIPT -->
+  <script src="./js/app.js"></script>
+</body>
+</html>

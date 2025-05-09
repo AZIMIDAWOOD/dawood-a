@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-theme="dawood-a">
+<head>
+  <meta charset="UTF-8" />
+  <title>dawood</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.8.2/dist/full.css" rel="stylesheet" />
+  <link href="./css/dist/output.css" rel="stylesheet" />
+  <script src="./js/calculatrice.js" defer></script>
+  <script src="./js/app.js" defer></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("TON_USER_ID"); // remplace par ton user ID
+  })();
+</script>
+</head>
+
+<style>
+  body {
+    background: url('./static/4.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    min-height: 100vh;
+    padding-bottom: 2rem;
+  }
+
+  header, footer, section {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .wow-title {
+    color: #ff4e00;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+  }
+
+  a {
+    color: #ffd700;
+  }
+
+  a:hover {
+    color: #ffa500;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 1s ease-out both;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .blog-article {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .blog-article h3 {
+    color: #ff4e00;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-article p {
+    color: white;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out both;
+  }
+
+  .blog-article a {
+    color: #ffd700;
+    font-weight: bold;
+  }
+
+  .blog-article a:hover {
+    color: #ffa500;
+  }
+
+  /* Ajout d'un style pour les images */
+  .image-section {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+
+  .image-section img {
+    border-radius: 10px;
+    width: 30%;
+    object-fit: cover;
+    height: auto;
+    animation: fadeInUp 1s ease-out both;
+  }
+
+  /* Style pour la vidéo */
+  .video-section {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .video-section video {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    animation: fadeInUp 1s ease-out both;
+  }
+
+</style>
+</head>
+<body class="min-h-screen">
+<div class="overlay">
+  <!-- HEADER -->
+  <header class="navbar shadow-lg sticky top-0 z-50">
+    <div class="flex-1">
+      <a href="index.html" class="btn btn-ghost text-xl font-bold wow-title">cantact</a>
+    </div>
+    <div class="flex-none relative">
+      <button class="btn btn-square btn-ghost lg:hidden" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div id="menu-mobile"
+           class="hidden absolute right-0 mt-2 bg-black bg-opacity-70 shadow-xl rounded-xl p-4 flex-col gap-2 w-44 z-50 lg:hidden">
+        <a href="contact.html" class="btn btn-ghost w-full text-right">Contact</a>
+        <a href="contact.html" class="btn btn-ghost w-full text-right">Contact</a>
+        <a href="index.html" class="btn btn-ghost w-full text-right">Accueil</a>
+        <a href="qcm.html" class="btn btn-ghost w-full text-right">QCM</a>
+      </div>
+    </div>
+    <nav class="hidden lg:flex gap-4 px-4">
+      <a href="contact.html" class="btn btn-ghost">Contact</a>
+      <a href="index.html" class="btn btn-ghost">Accueil</a>
+      <a href="qcm.html" class="btn btn-ghost">QCM</a>
+    </nav>
+  </header>
+
+  <!-- CONTENU PRINCIPAL -->
+
+  <main class="flex-grow bg-gradient-to-br from-blue-100 to-white text-gray-800 flex flex-col items-center justify-center px-4 py-8 space-y-10">
+
+   <!-- FORMULAIRE DE CONTACT AVEC EmailJS -->
+
+   <form id="contactForm"
+   onsubmit="sendEmail(event)"
+   class="bg-white p-8 rounded-xl shadow-xl max-w-md w-full space-y-4 border border-blue-200">
+   <h2 class="text-3xl font-bold text-blue-600 text-center">Contactez-moi</h2>
+ 
+   <!-- Champ Nom -->
+   <input type="text" name="name" required placeholder="Votre nom" class="input input-bordered bg-blue-50 border-blue-300 focus:bg-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 w-full" />
+ 
+   <!-- Champ Email -->
+   <input type="email" name="email" required placeholder="Votre email" class="input input-bordered bg-green-50 border-green-300 focus:bg-green-100 focus:border-green-500 focus:ring-2 focus:ring-green-200 w-full" />
+ 
+   <!-- Champ Message -->
+   <textarea name="message" required placeholder="Votre message" class="textarea textarea-bordered bg-yellow-50 border-yellow-300 focus:bg-yellow-100 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 w-full"></textarea>
+ 
+   <button type="submit" class="btn btn-primary w-full bg-blue-600 hover:bg-blue-700">Envoyer</button>
+   <p id="confirmation" class="text-green-600 font-medium text-center hidden mt-2">Message envoyé !</p>
+ </form>
+ 
+<!-- CALCULATRICE -->
+<section class="w-full max-w-md bg-white p-6 rounded-xl shadow-xl border border-gray-200">
+  <h2 class="text-2xl font-semibold text-center text-blue-500 mb-4">Calculatrice</h2>
+  <div class="bg-gray-100 p-4 rounded-lg">
+    <input id="calc-display" type="text" class="w-full text-right text-xl mb-4 px-4 py-2 rounded-md border border-gray-300 bg-white text-black shadow-inner" disabled />
+
+    <div class="grid grid-cols-4 gap-2 mb-4">
+      <!-- Ligne 1 -->
+      <button class="btn btn-primary" onclick="append('7')">7</button>
+      <button class="btn btn-secondary" onclick="append('8')">8</button>
+      <button class="btn btn-accent" onclick="append('9')">9</button>
+      <button class="btn btn-error" onclick="clearDisplay()">C</button>
+
+      <!-- Ligne 2 -->
+      <button class="btn btn-success" onclick="append('4')">4</button>
+      <button class="btn btn-warning" onclick="append('5')">5</button>
+      <button class="btn btn-info" onclick="append('6')">6</button>
+      <button class="btn btn-outline btn-info" onclick="append('/')">÷</button>
+
+      <!-- Ligne 3 -->
+      <button class="btn btn-outline btn-success" onclick="append('1')">1</button>
+      <button class="btn btn-outline btn-warning" onclick="append('2')">2</button>
+      <button class="btn btn-outline btn-error" onclick="append('3')">3</button>
+      <button class="btn btn-outline btn-accent" onclick="append('*')">×</button>
+
+      <!-- Ligne 4 -->
+      <button class="btn btn-outline btn-primary" onclick="append('0')">0</button>
+      <button class="btn btn-outline btn-secondary" onclick="append('.')">.</button>
+      <button class="btn btn-success" onclick="calculate()">=</button>
+      <button class="btn btn-outline btn-warning" onclick="append('-')">−</button>
+
+      <!-- Ligne 5 -->
+      <button class="btn btn-outline btn-info col-span-4" onclick="append('+')">+</button>
+    </div>
+
+    <!-- Historique -->
+    <div class="flex items-center gap-2 mt-4">
+      <input type="checkbox" id="toggle-history" class="checkbox checkbox-primary" checked />
+      <label for="toggle-history" class="label-text">Afficher l'historique</label>
+    </div>
+
+    <div id="history-section" class="mt-4">
+      <h3 class="font-semibold text-lg text-gray-700 mb-2">Historique</h3>
+      <ul id="calc-history" class="text-sm text-gray-600 space-y-1 max-h-40 overflow-y-auto"></ul>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="footer footer-center p-4 bg-base-200 text-base-content">
+    <p>Ensemble, bâtissons de belles choses 💪</p>
+  </footer>
+
+</body>
+</html>
+
